@@ -1,0 +1,68 @@
+
+stages: 
+- build 
+- test 
+- deployimage: node:8.6.0 
+before_script: 
+ - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )' 
+ - npm install 
+ 
+
+dev building and testing stage:
+ stage : build 
+ only: 
+ - dsa 
+ script :
+ - da
+ - ads
+ 
+dev deployment stage:
+ stage : deploy 
+ only: 
+  - dsa 
+ script :
+ - bash /home/dell/deploy/deploy/deploy.sh  'asd' 'sda' 'asd' 'sad'image: node:8.6.0 
+before_script: 
+ - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )' 
+ - npm install 
+stages: 
+- build 
+- test 
+- deploy
+ 
+
+dev building and testing stage:
+ stage : build 
+ only: 
+ - dev 
+ script :
+ - da
+ - da
+ 
+dev deployment stage:
+ stage : deploy 
+ only: 
+  - dev 
+ script :
+ - bash /home/dell/deploy/deploy/deploy.sh  'sad' 'sda' 'sda' 'sad'image: node:8.6.0 
+before_script: 
+ - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )' 
+ - npm install 
+stages: 
+- build 
+- test 
+- deploy
+ 
+
+dev building and testing stage:
+ stage : build 
+ only: 
+ - sda 
+ script :
+ 
+dev deployment stage:
+ stage : deploy 
+ only: 
+  - sda 
+ script :
+ - bash /home/dell/deploy/deploy/deploy.sh  'sda' 'asd' 'sad' 'sad'

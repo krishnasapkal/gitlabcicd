@@ -1,0 +1,24 @@
+{
+  "name": "gitlabcicd",
+  "version": "1.0.8",
+  "description": "Automate creation and deployement of your application on gitlab",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gitlab",
+    "cicd",
+    "gitlab",
+    ".yml",
+    "creator"
+  ],
+  "author": "krishna sapkal",
+  "license": "ISC",
+  "bin": {
+    "gitlabcicd": "./app.js"
+  },
+  "dependencies": {
+    "ncp": "^2.0.0"
+  }
+}
