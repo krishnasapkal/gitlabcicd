@@ -1,6 +1,6 @@
 {
   "name": "gitlabcicd",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Automate creation and deployement of your application on gitlab",
   "main": "app.js",
   "scripts": {

@@ -149,12 +149,15 @@ function read(text) {
 };
 
 function write(text) {
-    fs.appendFile(process.cwd()+"/./gitlab.yml", text, function (err) {
+    return new Promise((resolve,reject)=>{
+        fs.appendFile(process.cwd()+"/./gitlab.yml", text, function (err) {
 
-        if (err) {
-            return console.log(err);
-        }
-
-    });
+            if (err) {
+                reject(err);
+            }
+                resolve(true)
+        });
+    })
+   
 };
 

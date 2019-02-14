@@ -63,7 +63,7 @@ gitlabcicd ./path.json
 
   ##example
 
-  #json Example for one server
+  #json Example for 2 servers
 
     { 
        image: '',
