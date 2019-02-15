@@ -1,6 +1,6 @@
 {
   "name": "gitlabcicd",
-  "version": "1.0.9",
+  "version": "1.1.6",
   "description": "Automate creation and deployement of your application on gitlab",
   "main": "app.js",
   "scripts": {
@@ -11,12 +11,17 @@
     "cicd",
     "gitlab",
     ".yml",
-    "creator"
+    "creator",
+    "gitlabcicd",
+    "gitlab-cicd",
+    "gitlab.yml",
+    "gitlab deployment",
+    "gitlab cicd"
   ],
   "author": "krishna sapkal",
   "license": "ISC",
   "bin": {
-    "gitlabcicd": "./app.js"
+    "gitlab-cicd": "./app.js"
   },
   "dependencies": {
     "ncp": "^2.0.0"

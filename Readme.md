@@ -1,13 +1,10 @@
 
 # Automatically Set up Gitlab CICD
 
-Generate gitlab.yml file automatically along with the bash script file which will automatically setup Gitlab CICD Using Docker and Gitlab Runner For You.
+Generate gitlab.yml file automatically along with the bash script files which will automatically setup Gitlab CICD Using Docker and Gitlab Runner For You.
 
 
-### Command Line
-
-Easily Setup Your Gitlab CICD in Minutes.
-
+## STEP 1
 prerequisites : Install gitlab runner and docker on server              (https://docs.gitlab.com/runner/install/)
 
 
@@ -17,6 +14,7 @@ Add Private key of your server to Environment Variable of gitlab
 
 
 
+##STEP 2
 
 ```bash
 # install the bin script
@@ -28,12 +26,20 @@ npm install -g gitlabcicd
 ## Run gitlabcicd from your Command Line
 gitlabcicd
 
+```
 
-### Give path of json file 
+##OR
 
+
+
+### Give path of json file to app
+
+```bash
+# install the bin script
+npm install -g gitlabcicd
 gitlabcicd ./path.json
 
-#json format
+#Format of json file
   {
   image: 'nodeimage version',
   gitlabUsername: 'Gitlab Username',
@@ -61,9 +67,14 @@ gitlabcicd ./path.json
    }
 
 
-  ##example
+```
 
-  #json Example for 2 servers
+
+
+  #Example Json
+
+
+```bash
 
     { 
        image: '',
@@ -109,6 +120,7 @@ gitlabcicd ./path.json
         ]
        }
 
+  #run gitlabcicd from command line and give path of json file
   gitlabcicd path.json  
 
 

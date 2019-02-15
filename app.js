@@ -10,7 +10,9 @@ var path = require('path');
 global.appRoot = path.resolve(__dirname);
 
 console.log(process.argv);
-fs.writeFile("./test.yml", "", function () { });
+fs.writeFile(process.cwd() + "/.gitlab-ci.yml", "", function (err) {
+    console.log(err);
+ });
 
 fs.copyFile(appRoot +'/deploy/uandr.sh', appRoot + '/deploy/updateAndRestart.sh', (err) => {
     if (err) throw err;
@@ -18,7 +20,7 @@ fs.copyFile(appRoot +'/deploy/uandr.sh', appRoot + '/deploy/updateAndRestart.sh'
   });
 
 start().then(async (deployConfig) => {
-    text = `image: ${deployConfig.image || "node:8.6.0"} \nbefore_script: \n - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )' \n - npm install `
+    text = `image: ${deployConfig.image || "node:8.6.0"}` + ` \nbefore_script: \n - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )' \n - npm install `
     await write(text);
     text = "\nstages: \n- build \n- test \n- deploy"
     await write(text);
@@ -35,7 +37,7 @@ start().then(async (deployConfig) => {
         await write("\ndev deployment stage:");
         await write(`\n stage : deploy \n only: \n  - ${server.brachName} \n script :`);
         //  await write(`\n - ${server.deployScript[0]} '${server.address}' '${deployConfig.username}' '${deployConfig.password}' '${deployConfig.repository}'`);
-        let dScript = `\n - bash ${appRoot}/deploy/deploy.sh  '${server.address}' '${deployConfig.gitlabUsername}' '${deployConfig.gitlabPassword}' '${deployConfig.gitlabRepository}'`;
+        let dScript = `\n - bash ./deploy/deploy.sh  '${server.address}' '${deployConfig.gitlabUsername}' '${deployConfig.gitlabPassword}' '${deployConfig.gitlabRepository}'`;
         await write(dScript);
         let result;
            
@@ -49,7 +51,7 @@ start().then(async (deployConfig) => {
                     let s = '#replacescript' + i;
                     let reg = new RegExp(s,"g");
                     result = result.replace(reg, element);
-                    console.log(result);
+                   
                     fs.writeFile(appRoot +"/deploy/updateAndRestart.sh", result, 'utf8', function (err) {
                         if (err) return console.log(err);
                     });
@@ -125,7 +127,7 @@ function start() {
                 details.servers.push(server);
             }
             readline.close();
-            console.log(details);
+          
             resolve(details);
         }
         else {
@@ -150,7 +152,8 @@ function read(text) {
 
 function write(text) {
     return new Promise((resolve,reject)=>{
-        fs.appendFile(process.cwd()+"/./gitlab.yml", text, function (err) {
+        console.log(text);
+        fs.appendFile(process.cwd()+"/./.gitlab-ci.yml", text, function (err) {
 
             if (err) {
                 reject(err);
