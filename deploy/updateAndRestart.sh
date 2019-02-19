@@ -27,7 +27,7 @@ echo "Deploying"
 #sudo npm install
 #Restart the node server
 #sudo pm2 restart server.js
-dassda
+#replacescript0
 #replacescript2
 #replacescript3
 #replacescript4
